@@ -1,36 +1,51 @@
 import styled from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+import Heading from "./ui/Heading";
+import Row from "./ui/Row";
 
-const H1 = styled.h1`
-  font-size: 30px;
-  font-weight: 600;
-  background-color: yellow;
-`;
-
-const Button = styled.button`
-  font-size: 1.4rem;
-  padding: 1.2rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 7px;
-  background-color: purple;
-  color: white;
-  margin: 20px;
-`;
-
-const Input = styled.input`
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 0.8rem 1.2rem;
+const StyledApp = styled.main`
+  /* background-color: orangered; */
+  padding: 20px;
 `;
 
 function App() {
   return (
-    <div>
-      <H1>The Wild Oasis</H1>
-      <Button onClick={() => alert("Check in")}>Check in</Button>
-      <Button onClick={() => alert("Check out")}>Check Out</Button>
-      <Input type="number" placeholder="Numbers of guests"></Input>
-    </div>
+    <>
+      <GlobalStyles />
+      <StyledApp>
+        <Row>
+          <Row type="horizontal">
+            <Heading as="h1">The Wild Oasis</Heading>
+            <div>
+              <Heading as="h2">Check in and out</Heading>
+              <Button
+                variation="primary"
+                size="medium"
+                onClick={() => alert("Check in")}
+              >
+                Check in
+              </Button>
+              <Button
+                variation="secondary"
+                size="small"
+                onClick={() => alert("Check out")}
+              >
+                Check Out
+              </Button>
+            </div>
+          </Row>
+          <Row type="vertical">
+            <Heading as="h3">Form</Heading>
+            <form>
+              <Input type="number" placeholder="Numbers of guests"></Input>
+              <Input type="number" placeholder="Numbers of guests"></Input>
+            </form>
+          </Row>
+        </Row>
+      </StyledApp>
+    </>
   );
 }
 
